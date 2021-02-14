@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/src/increment_and_sum.cpp
+vect_add_one.h
+/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/src/vect_add_one.h
+
+/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/src/increment_and_sum.h
+vector
+-
+
+/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/src/main.cpp
+iostream
+-
+vector
+-
+increment_and_sum.h
+/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/src/increment_and_sum.h
+
+/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/src/vect_add_one.cpp
+vect_add_one.h
+/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/src/vect_add_one.h
+
+/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/src/vect_add_one.h
+vector
+-
+

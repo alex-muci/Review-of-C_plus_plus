@@ -1,0 +1,121 @@
+> The symbols & and * have a different meaning, depending on which side of an equation they appear <
+
+This is extremely important to remember. 
+For the & symbol, if it appears on the left side of an equation (e.g. when declaring a variable), 
+it means that the variable is declared as a reference. 
+If the & appears on the right side of an equation, or before a previously defined variable, 
+it is used to return a memory address.
+
+-----------------------
+> A C++ pointer is just a variable that stores the memory address of an object in your program <
+
+pointers essentially keep track of where a variable is stored in the computer's memory.
+
+C++ programs can be written without using pointers extensively (or at all). 
+However, pointers give you better control over how your program uses memory and 
+it can often be far more efficient to perform an operation with a pointer to an object than performing the same operation using the object itself.    
+
+int i = 5;
+// A pointer pointer_to_i is declared and initialized to the address of i.
+int* pointer_to_i = &i;
+
+Once you have a pointer, you may want to retrieve the object it is pointing to. 
+In this case, the * symbol can be used again. 
+This time, however, it will appear on the right hand side of an equation or in front of an already-defined variable, 
+so the meaning is different. In this case, it is called the "dereferencing operator", and it returns the object being pointed to.
+
+-----------------------
+Example #1
+vector<int> v {1, 2, 3};
+// Declare and initialize a pointer to the address of v here:
+vector<int>* pointer_to_v = &v;
+// Dereference your pointer to v and print the int at index 0 here (note: you should print 1):
+cout << "The first element of v is: " << (*pointer_to_v)[0];  // NB the parenthesis!
+
+-----------------------
+Example #2
+// If the pointer is pointing to a large object, it can be much more efficient to 
+// pass the pointer to a function than to pass a copy of the object as with pass-by-value.
+
+#include <iostream>
+using std::cout;
+
+void AddOne(int* j)
+{
+    // Dereference the pointer and increment the int being pointed to
+    (*j)++;
+}
+
+int main() 
+{
+    int i = 1;
+    cout << "The value of i is: " << i << "\n";
+    
+    // Declare a pointer to i:
+    int* pi = &i;
+    AddOne(pi);
+    cout << "The value of i is now: " << i << "\n";
+}
+
+When using pointers with functions, some care should be taken. 
+If a pointer is passed to a function and then assigned to a variable in the function 
+that goes out of scope after the function finishes executing, then the pointer will have 
+undefined behavior at that point - the memory it is pointing to might be overwritten 
+by other parts of the program.
+
+-----------------------
+Example #3
+You can also return a pointer from a function.
+In the example below, a reference is passed into a function and a pointer is returned. 
+NB: This is safe since the pointer being returned points to a reference - a variable that exists 
+outside of the function and will not go out of scope in the function.
+
+#include <iostream>
+using std::cout;
+
+int* AddOne(int& j) 
+{
+    // Increment the referenced int and return the
+    // address of j.
+    j++;
+    return &j;
+}
+
+int main() 
+{
+    int i = 1;
+    cout << "The value of i is: " << i << "\n";
+    
+    // Declare a pointer and initialize to the value
+    // returned by AddOne:
+    int* my_pointer = AddOne(i);
+    cout << "The value of i is now: " << i << "\n";
+    cout << "The value of the int pointed to by my_pointer is: " << *my_pointer << "\n";
+}
+
+-----------------------------
+References vs pointers
+
+References must be initialized when they are declared. 
+This means that a reference will always point to data that was intentionally assigned to it.	
+
+Pointers can be declared without being initialized, which is dangerous. 
+If this happens mistakenly, the pointer could be pointing to an arbitrary address in memory, and 
+the data associated with that address could be meaningless, leading to undefined behavior and difficult-to-resolve bugs.
+
+References can not be null. 
+This means that a reference should point to meaningful data in the program.	
+
+Pointers can be null. In fact, if a pointer is not initialized immediately, it is often best practice to initialize to nullptr, 
+a special type which indicates that the pointer is null.
+
+When used in a function for pass-by-reference, the reference can be used just as a variable of the same type would be.	
+
+When used in a function for pass-by-reference, a pointer must be dereferenced in order to access the underlying object.
+
+
+References are generally easier and safer than pointers. 
+> As a decent rule of thumb, references should be used in place of pointers when possible <
+However, there are times when it is not possible to use references. One example is object initialization. 
+You might like one object to store a reference to another object. However, if the other object is not yet available 
+when the first object is created, then the first object will need to use a pointer.
