@@ -34,6 +34,7 @@ g++ -c *.cpp
 g++ *.o
 
 or directily g++ *.cpp to produce the output a.out
+(to produce the executable and run at the same time: g++ ./mymain.cpp && ./a.out)
 
 But what if you make changes to your code and you need to re-compile? 
 In that case, you can compile only the file that you changed, 
