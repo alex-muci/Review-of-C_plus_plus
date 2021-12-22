@@ -1,3 +1,0 @@
-/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/build/CMakeFiles/my_executable_name.dir
-/mnt/c/Users/Alessandro/Documents/PROJECTS/c++_projects/helloworld/example_multi_files/build/CMakeFiles/edit_cache.dir

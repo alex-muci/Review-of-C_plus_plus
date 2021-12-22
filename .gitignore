@@ -32,3 +32,11 @@
 *.app
 
 .vscode
+
+# CMake
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/Makefile
+**/CMakeFiles/
+**/my_executable_name
+# **/build/

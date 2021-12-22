@@ -8,6 +8,7 @@ using std::ifstream;
 using std::istringstream;
 using std::string;
 using std::vector;
+using std::abs;
 
 enum class State {kEmpty, kObstacle};
 
@@ -39,6 +40,17 @@ vector<vector<State>> ReadBoardFile(string path) {
   return board;
 }
 
+// Calculate the manhattan distance
+int Heuristic(int x1, int y1, int x2, int y2) {
+  return abs(x2 - x1) + abs(y2 - y1);
+}
+
+//  Implementation of A* search algorithm
+vector<vector<State>> Search(vector<vector<State>> grid, int init[2], int goal[2]) {
+  cout << "No path found!" << "\n";
+  return std::vector<vector<State>> {};
+}
+
 string CellString(State cell) {
   switch(cell) {
     case State::kObstacle: return "⛰️   ";
@@ -56,6 +68,11 @@ void PrintBoard(const vector<vector<State>> board) {
 }
 
 int main() {
+  auto board = ReadBoardFile("helloworld/1.board");
+  int init[2]{0, 0};  // this is how you define array of lenght 2
+  int goal[2]{4, 5};
   auto board = ReadBoardFile("1.board");
+  //vector<vector<State>> solution = Search(board, init, goal);
+  // PrintBoard(solution);
   PrintBoard(board);
 }

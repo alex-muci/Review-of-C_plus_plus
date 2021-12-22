@@ -1,11 +1,17 @@
-#include <iostream>
+// The #include is a preprocessor command which is executed before the code is compiled. 
+// e.g. it searches for the iostream header file and pastes its contents into the program. 
+#include <iostream>   // iostream contains the declarations for the input/output stream objects.
 #include <vector>
 #include <string>
-#include <fstream>
-#include <sstream>
+#include <fstream>  // file streaming classes
+#include <sstream>  // contains istringstream object
 
-using namespace std;
+// Namespaces are a way in C++ to group identifiers (names) together. They provide context for identifiers to avoid naming collisions. 
 // using std::vector;
+
+// The std namespace is the namespace used for the standard library. The using command adds std::cout to the global scope of the program. 
+// this way you can use cout in your code instead of having to write std::cout.
+using namespace std;  
 
 /* recall enum in Python
 import enum
@@ -33,16 +39,18 @@ void ReadBoardFile_cout(string path) {
   if (myfile) {
     string line;
     while (getline(myfile, line)) {
+      // The << operator is the stream insertion operator, and it writes what's on the right side of the operator to the left side.
       cout << line << "\n";
     }
   }
 }
 
-
 vector<int> ParseLine(string my_string) {
   int n; char cr;
   vector<int> v;
-  std::istringstream my_stream(my_string);
+  std::istringstream my_stream(my_string);  // istringstream can be use as a boolen, i.e. false when nothing left to stream
+  // extraction operator >> writes the stream to the variable on the right of the operator and returns the istringstream object, 
+  // so the entire expression my_stream >> n is an istringstream object and can be used as a boolean!  (char used to contain ',') 
   while (my_stream >> n >> cr) {    // (my_stream >> n >> cr && cr == ',') 
     v.push_back(n);
     }
@@ -101,7 +109,7 @@ int AdditionFunctionVec(vector<int> &v)
 
     3. oppure using iterator (and dereferencing in sum)
     int sum = 0;
-    for(auto i = v.begin(); i != v.end(); ++i)
+    for(auto i = v.begin(); i != v.end(); ++i) 
         sum += *i;  
     return sum;
 
@@ -130,6 +138,8 @@ int main()
       cout << i << "\n";
     }
     */
+
+    auto v_6 = {1, 2, 3};  // NB: auto is for automatic type inference
 
     /* Loop  */
     // Post-increment assigns i to c and then increments i (MOST USED)
@@ -208,7 +218,7 @@ int main()
     cout << n << "\n";
     */
     while(my_stream){
-        my_stream >> n;
+        my_stream >> n;  
         if (my_stream) {
             cout << "That stream was successful: " << n << "\n";
         }
