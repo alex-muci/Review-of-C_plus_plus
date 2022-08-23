@@ -40,3 +40,5 @@
 **/CMakeFiles/
 **/my_executable_name
 # **/build/
+
+prova.cpp

@@ -119,3 +119,34 @@ References are generally easier and safer than pointers.
 However, there are times when it is not possible to use references. One example is object initialization. 
 You might like one object to store a reference to another object. However, if the other object is not yet available 
 when the first object is created, then the first object will need to use a pointer.
+
+-----------------------------
+-> meaning (from https://stackoverflow.com/questions/1238613/what-is-the-difference-between-the-dot-operator-and-in-c)
+
+foo->bar() is the same as (*foo).bar()
+
+The parenthesizes above are necessary because of the binding strength of the * and . operators.
+*foo.bar() wouldn't work because Dot (.) operator is evaluated first (see operator precedence)
+
+The Dot (.) operator can't be overloaded, arrow (->) operator can be overloaded.
+The Dot (.) operator can't be applied to pointers.
+
+e.g. (see also .cpp in this folder)
+
+bool Compare(const vector<int> a, const vector<int> b) {
+  int f1 = a[2] + a[3]; // f1 = g1 + h1
+  int f2 = b[2] + b[3]; // f2 = g2 + h2
+  return f1 > f2; 
+}
+
+
+/**
+ * Sort the two-dimensional vector of ints in descending order.
+ */
+void CellSort(vector<vector<int>> *v) {
+  sort(v->begin(), v->end(), Compare);
+}
+
+
+// call function with pointer as a variable (&open is the address of 2-D vector open), note &
+CellSort(&open);  

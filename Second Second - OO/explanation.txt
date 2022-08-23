@@ -1,0 +1,44 @@
+===========
+Structures 
+
+Structures allow developers to create their own types ("user-defined" types) 
+to aggregate data relevant to their needs.
+
+For example, a user might define a Rectangle structure
+
+struct Rectangle {
+  float length;
+  float width;
+};
+
+Every C++ variable is defined with a type. E.g.
+
+int value;            // a fundamental (or primitive) type
+Rectangle rectangle;  // user defined
+
+
+// one more example (NB: by default member are public)
+struct Date {
+  int day;
+  int month;
+  int year;
+};
+
+// Create an instance of the Date structure
+Date date;
+// Initialize the attributes of Date
+date.day = 1; date.month = 10; date.year = 2019;
+
+// TEST
+#include <cassert>
+assert(date.day == 1);
+
+Generally, we want to avoid instantiating an object with undefined members. 
+Ideally, we would like all members of an object to be in a valid state once the object is instantiated. 
+We can change the values of the members later. Eg.
+
+struct Date {
+  int day{1};
+  int month{1};
+  int year=2000;
+};

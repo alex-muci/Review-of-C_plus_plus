@@ -36,6 +36,9 @@ g++ *.o
 or directily g++ *.cpp to produce the output a.out
 (to produce the executable and run at the same time: g++ ./mymain.cpp && ./a.out)
 
+if you want to choose the standard
+g++ -std=c++17 ./code/filename.cpp 
+
 But what if you make changes to your code and you need to re-compile? 
 In that case, you can compile only the file that you changed, 
 and you can use the existing object files 
@@ -72,7 +75,7 @@ add_executable(my_executable_name src/main.cpp src/vect_add_one.cpp src/incremen
 
 NB: A typical CMake project will have a build directory in the same place as the top-level CMakeLists.txt.
 so, for examples
-> mkdr build
+> mkdir build
 > cd build
 From within the build directory, you can now run CMake as follows:
 > cmake ..

@@ -88,6 +88,64 @@ void PrintBoard(const vector<vector<int>> board) {
 
 }
 
+// ****************************************************************
+/*  pass-by-value: 
+      when the function is called on some data, a copy of that data is made, and the function operates on a copy of the data instead of the original data. 
+      This is referred to as pass by value, since only a copy of the values of an object are passed to the function, and not the actual objects itself.
+
+    pass-by-reference:
+      it is possible to modify a variable from within the function. To do this, you must pass a reference to the variable a, instead of the value. 
+      In C++, a reference is just an alternative name for the same variable. 
+      To pass by reference, you simply need to add an ampersand & before the variable in the function declaration.
+
+    see also explanations about pointers and references in the "references_and_pointers" folder
+  */
+// ****************************************************************
+
+
+/*
+C++ supports two notions of immutability:
+- const: meaning roughly " I promise not to change this value."...The compiler enforces the promise made by const....
+- constexpr: meaning roughly "to be evaluated at compile time." This is used primarily to specify constants...
+
+  const int j = i * 2;  // "j can only be evaluated at run time."
+                        // "But I promise not to change it after it is initialized."
+      
+  constexpr int k = 3;  // "k, in contrast, can be evaluated at compile time."
+
+But the compiler will catch a const variable that changes too.
+    const int i = 2; // "I promise not to change this."
+    i++;             // "I just broke my promise."
+
+The major difference between const and constexpr, though, is that constexpr must be evaluated at compile time.
+The compiler will catch a constexpr variable that cannot be evaluated at compile time.
+    int i;
+    std::cout << "Enter an integer value for i: ";
+    std::cin >> i;
+    constexpr int j = i * 2;  // "j can only be evaluated at run time."
+                              // "constexpr must be evaluated at compile time."
+                              // "So this code will produce a compilation error."
+
+A common usage of const is to guard against accidentally changing a variable, especially when it is passed-by-reference as a function argument.
+  e.g. 
+  int sum(const std::vector<int> &v) {...}
+  
+*/
+
+/* NB: init and goal in Search function below are arrays.
+
+  vector<vector<State>> Search(vector<vector<State>> grid, int init[2], int goal[2]) {...}
+
+
+  An array is a C++ container much like a vector, although without the ability to change size after initialization. 
+  Arrays can be accessed and iterated over just as vectors. There are less flexible (no size change), but more memory efficient.
+  Almost alwats is better to avoid arrays and prefer vectors (to avoid issue with memory management, whilst vectors are safer)
+
+  https://www.programiz.com/cpp-programming/arrays  
+  int x[6] = {19, 10, 8, 17, 9, 15};      // declare and initialize and array  
+  double numbers[] = {7, 5, 6, 12, 35};  // initialize an array without specifying size, implied though
+
+*/
 
 int AdditionFunction(int i, int j) 
 {
@@ -170,9 +228,8 @@ int main()
     // 1. bis index-based (2-dim: first rows, then cols)
     for (int i = 0; i < b.size(); i++) {
             for (int j = 0; j < b[i].size(); j++) {
-            cout << b[i][j];
-        }
-        cout << "\n";
+            cout << b[i][j] << "\n";
+        }        
     }
 
     // 2. range-based    
