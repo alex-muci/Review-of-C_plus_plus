@@ -16,7 +16,8 @@ using namespace std;
 /* recall enum in Python
 import enum
 class Colour(enum.Enum):
-   white = 1;  black = 2; blue = 3
+   white = 1  
+   black = 2; blue = 3
 
 my_colour = Colour.blue
 */
@@ -155,13 +156,13 @@ int AdditionFunction(int i, int j)
 int AdditionFunctionVec(vector<int> &v)
 {
     int sum = 0;
-    for(int &i : v)
+    for(int &i : v)  // NB difference--> for(int i : v): sum += v[i]
         sum += i;
     return sum;
 
     /* 2. oppure:
     int sum = 0;
-    for(int i = 0; i < v.size(); ++i)
+    for(int i = 0; i < v.size(); i++)
         sum += v[i];
     return sum;
 
@@ -186,9 +187,14 @@ int main()
     v_3 = {6};
 
     /*
-    vector<int> a = {0, 1, 2, 3, 4};
-    for(int i : a)
-        cout << a[i] << " ";    
+    vector<int> aaa = {0, 1, 2, 3, 4};
+    for(int i : aaa)
+        cout << aaa[i] << " ";    
+    cout << "\n";
+
+    vector<int> bbb = {0, 1, 2, 3, 4};
+    for(int &i : bbb)
+        cout << i << " ";    
     cout << "\n";
 
     // simple loop
